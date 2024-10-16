@@ -17,6 +17,7 @@ public class PostDTO {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Long id;
     private Long userId;
+    private String userName;
     private String imageUrl;
     private Long likes;
     private boolean active;

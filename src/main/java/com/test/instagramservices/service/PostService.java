@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,7 +24,8 @@ public class PostService {
 
     private static PostDTO buildPost(Post post) {
         PostDTO dto = PostDTO.builder()
-                .userId(post.getUserId())
+                .userId(post.getUser().getId())
+                .userName(post.getUser().getName())
                 .active(post.isActive())
                 .createdAt(post.getCreatedAt())
                 .likes(post.getLikes())
@@ -31,5 +33,10 @@ public class PostService {
                 .build();
         log.info("PostService::buildPost [{}]", dto);
         return dto;
+    }
+
+    public List<PostDTO> findAllPost() {
+        List<Post> posts = userRepository.findAll();
+        return posts.stream().map(PostService::buildPost).toList();
     }
 }
