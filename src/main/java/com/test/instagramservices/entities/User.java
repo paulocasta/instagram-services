@@ -1,4 +1,4 @@
-package com.test.instagramservices.domain;
+package com.test.instagramservices.entities;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "instgram_user")
+@Table(name = "instagram_user")
 public class User {
 
     @Id

@@ -1,6 +1,6 @@
 package com.test.instagramservices.service;
 
-import com.test.instagramservices.domain.Comment;
+import com.test.instagramservices.entities.Comment;
 import com.test.instagramservices.dto.CommentDTO;
 import com.test.instagramservices.repository.CommentRepository;
 import lombok.AllArgsConstructor;

@@ -36,4 +36,13 @@ public class PostController {
         log.info("Retrieving all post");
         return ResponseEntity.ok().headers(corsHeader).body(postService.findAllPost());
     }
+
+    @GetMapping(value = "/allFollow/{id}")
+    public ResponseEntity<List<PostDTO>> getAllFollowPost(@PathVariable Long id) {
+
+        HttpHeaders corsHeader = new HttpHeaders();
+        corsHeader.set("Access-Control-Allow-Origin", "*");
+        log.info("Retrieving all post");
+        return ResponseEntity.ok().headers(corsHeader).body(postService.findAllFollowPost(id));
+    }
 }

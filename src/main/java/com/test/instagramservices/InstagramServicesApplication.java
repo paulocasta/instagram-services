@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan(basePackages = "com.test.instagramservices.domain")
+@EntityScan(basePackages = "com.test.instagramservices.entities")
 @EnableJpaRepositories(basePackages = "com.test.instagramservices.repository")
 public class InstagramServicesApplication {
 

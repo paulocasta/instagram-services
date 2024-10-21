@@ -1,6 +1,6 @@
 package com.test.instagramservices.service;
 
-import com.test.instagramservices.domain.Post;
+import com.test.instagramservices.entities.Post;
 import com.test.instagramservices.dto.PostDTO;
 import com.test.instagramservices.repository.PostRepository;
 import lombok.AllArgsConstructor;
@@ -22,6 +22,16 @@ public class PostService {
         return user.map(PostService::buildPost).orElse(null);
     }
 
+    public List<PostDTO> findAllPost() {
+        List<Post> posts = userRepository.findAll();
+        return posts.stream().map(PostService::buildPost).toList();
+    }
+
+    public List<PostDTO> findAllFollowPost(Long id) {
+        List<Post> posts = userRepository.findAllFollowPost(id);
+        return posts.stream().map(PostService::buildPost).toList();
+    }
+
     private static PostDTO buildPost(Post post) {
         PostDTO dto = PostDTO.builder()
                 .userId(post.getUser().getId())
@@ -35,8 +45,4 @@ public class PostService {
         return dto;
     }
 
-    public List<PostDTO> findAllPost() {
-        List<Post> posts = userRepository.findAll();
-        return posts.stream().map(PostService::buildPost).toList();
-    }
 }

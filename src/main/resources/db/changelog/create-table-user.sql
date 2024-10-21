@@ -1,4 +1,4 @@
-create TABLE IF NOT EXISTS instgram_user (
+create TABLE IF NOT EXISTS instagram_user (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     first_name varchar(30) NOT NULL,
     last_name varchar(30) NOT NULL,
@@ -6,5 +6,5 @@ create TABLE IF NOT EXISTS instgram_user (
     email varchar(100) NOT NULL,
     active BOOLEAN NOT NULL DEFAULT TRUE,
     created_at  TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at  TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP NOT NULL
+    updated_at  TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );

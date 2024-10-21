@@ -1,6 +1,6 @@
 package com.test.instagramservices.service;
 
-import com.test.instagramservices.domain.User;
+import com.test.instagramservices.entities.User;
 import com.test.instagramservices.dto.UserDTO;
 import com.test.instagramservices.repository.UserRepository;
 import lombok.AllArgsConstructor;
