@@ -1,0 +1,49 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table follow {
+  following_user_id integer [unique]
+  followed_user_id integer [unique]
+  active boolean
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table user {
+  id integer [primary key]
+  first_name varchar
+  last_name varchar
+  username varchar
+  email varchar
+  active boolean
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table post {
+  id integer [primary key]
+  user_id integer
+  imageUrl varchar
+  likes int
+  active boolean
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table comment {
+  id integer [primary key]
+  title varchar
+  comment text
+  user_id integer
+  active boolean
+  created_at timestamp
+}
+
+Ref: post.user_id > user.id // many-to-one
+
+Ref: user.id < follow.following_user_id
+
+Ref: user.id < follow.followed_user_id
+
+Ref: user.id < comment.user_id
+
