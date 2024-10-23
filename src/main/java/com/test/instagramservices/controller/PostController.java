@@ -6,8 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,10 +42,22 @@ public class PostController {
 
     @GetMapping(value = "/allFollow/{id}")
     public ResponseEntity<List<PostDTO>> getAllFollowPost(@PathVariable Long id) {
-
         HttpHeaders corsHeader = new HttpHeaders();
         corsHeader.set("Access-Control-Allow-Origin", "*");
         log.info("Retrieving all post");
         return ResponseEntity.ok().headers(corsHeader).body(postService.findAllFollowPost(id));
     }
+
+    @PostMapping
+    public ResponseEntity<String> createPost(@RequestBody PostDTO dto) {
+        log.info("PostController::createPost dto={}", dto);
+        return postService.createPost(dto);
+    }
+
+    @DeleteMapping(value = "{id}")
+    public ResponseEntity<String> deletePost(@PathVariable Long id) {
+        log.info("PostController::deletePost id={}", id);
+        return postService.deletePostById(id);
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.test.instagramservices;
+package com.test.instagramservices.mapper;
 
 import com.test.instagramservices.dto.UserDTO;
 import com.test.instagramservices.entities.User;

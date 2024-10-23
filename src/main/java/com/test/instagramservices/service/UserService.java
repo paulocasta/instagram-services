@@ -1,6 +1,6 @@
 package com.test.instagramservices.service;
 
-import com.test.instagramservices.UserMapper;
+import com.test.instagramservices.mapper.UserMapper;
 import com.test.instagramservices.dto.UserDTO;
 import com.test.instagramservices.entities.User;
 import com.test.instagramservices.repository.UserRepository;

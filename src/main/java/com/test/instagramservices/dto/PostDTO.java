@@ -1,5 +1,6 @@
 package com.test.instagramservices.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
@@ -20,6 +21,8 @@ public class PostDTO {
     private String userName;
     private String imageUrl;
     private Long likes;
+    @JsonIgnore
     private boolean active;
+
     private LocalDateTime createdAt;
 }
