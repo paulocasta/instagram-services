@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +24,7 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @GetMapping(value = "/byId/{id}")
+    @GetMapping(value = "{id}")
     public CommentDTO findCommentById(@PathVariable Long id) {
         return commentService.findByCommentId(id);
     }
@@ -41,7 +42,20 @@ public class CommentController {
 
     @DeleteMapping(value = "{id}")
     public ResponseEntity<String> deleteComment(@PathVariable Long id) {
-        log.info("UserController::deleteId id={}", id);
+        log.info("CommentController::deleteId id={}", id);
         return commentService.deleteCommentById(id);
     }
+
+    @PutMapping(value = "/disable/{id}")
+    public ResponseEntity<String> disableComment(@PathVariable Long id) {
+        log.info("CommentController::disableComment id={}", id);
+        return commentService.disableComment(id);
+    }
+
+    @PutMapping(value = "/enable/{id}")
+    public ResponseEntity<String> enableComment(@PathVariable Long id) {
+        log.info("CommentController::enableComment id={}", id);
+        return commentService.enableComment(id);
+    }
+
 }

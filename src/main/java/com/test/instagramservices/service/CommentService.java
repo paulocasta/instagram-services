@@ -1,8 +1,7 @@
 package com.test.instagramservices.service;
 
-import com.test.instagramservices.entities.Comment;
 import com.test.instagramservices.dto.CommentDTO;
-import com.test.instagramservices.entities.Post;
+import com.test.instagramservices.entities.Comment;
 import com.test.instagramservices.mapper.CommentMapper;
 import com.test.instagramservices.repository.CommentRepository;
 import lombok.AllArgsConstructor;
@@ -10,14 +9,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 @Slf4j
 public class CommentService {
+
+    private static final ResponseEntity<String> COMMENT_NOT_FOUND = ResponseEntity.status(404).body("Comment not found");
 
     private final CommentRepository commentRepository;
 
@@ -42,13 +43,33 @@ public class CommentService {
     }
 
     public ResponseEntity<String> deleteCommentById(Long id) {
-        Optional<Comment> post = commentRepository.findById(id);
-        if (post.isPresent()) {
+        Optional<Comment> comment = commentRepository.findById(id);
+        if (comment.isPresent()) {
             log.info("Deleting comment");
-            commentRepository.delete(post.get());
+            commentRepository.delete(comment.get());
             return ResponseEntity.ok("Comment deleted");
         }
-        return ResponseEntity.status(404).body("Post not found");
+        return COMMENT_NOT_FOUND;
+    }
+
+    public ResponseEntity<String> disableComment(Long id) {
+        return updateActiveComment(id, false);
+    }
+
+    public ResponseEntity<String> enableComment(Long id) {
+        return updateActiveComment(id, true);
+    }
+
+    private ResponseEntity<String> updateActiveComment(Long id, boolean active) {
+        Optional<Comment> comment = commentRepository.findById(id);
+        if (comment.isPresent()) {
+            Comment cmt = comment.get();
+            cmt.setActive(active);
+            cmt.setUpdatedAt(LocalDateTime.now());
+            commentRepository.save(cmt);
+            return active ? ResponseEntity.ok("Comment enable") : ResponseEntity.ok("Comment disabled");
+        }
+        return COMMENT_NOT_FOUND;
     }
 }
 

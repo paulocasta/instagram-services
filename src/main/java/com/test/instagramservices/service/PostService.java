@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,8 @@ import java.util.Optional;
 @AllArgsConstructor
 @Slf4j
 public class PostService {
+
+    private static final ResponseEntity<String> POST_NOT_FOUND = ResponseEntity.status(404).body("Post not found");
 
     private final PostRepository postRepository;
     private final UserRepository userRepository;
@@ -46,7 +49,7 @@ public class PostService {
             postRepository.save(post);
             return ResponseEntity.ok("Post created");
         }
-        return ResponseEntity.status(404).body("Post not created, user not found");
+        return ResponseEntity.status(404).body("User not found");
     }
 
     public ResponseEntity<String> deletePostById(Long id) {
@@ -56,6 +59,26 @@ public class PostService {
             postRepository.delete(post.get());
             return ResponseEntity.ok("Post deleted");
         }
-        return ResponseEntity.status(404).body("Post not found");
+        return POST_NOT_FOUND;
+    }
+
+    public ResponseEntity<String> disablePost(Long id) {
+        return updateActivePost(id, false);
+    }
+
+    public ResponseEntity<String> enablePost(Long id) {
+        return updateActivePost(id, true);
+    }
+
+    private ResponseEntity<String> updateActivePost(Long id, boolean active) {
+        Optional<Post> post = postRepository.findById(id);
+        if (post.isPresent()) {
+            Post ps = post.get();
+            ps.setActive(active);
+            ps.setUpdatedAt(LocalDateTime.now());
+            postRepository.save(ps);
+            return active ? ResponseEntity.ok("Post enable") : ResponseEntity.ok("Post disabled");
+        }
+        return POST_NOT_FOUND;
     }
 }

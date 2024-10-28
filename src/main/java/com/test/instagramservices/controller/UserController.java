@@ -46,4 +46,16 @@ public class UserController {
         log.info("UserController::updateUser dto={}", dto);
         return userService.updateUser(dto);
     }
+
+    @PutMapping(value = "/disable/{id}")
+    public ResponseEntity<String> disableUser(@PathVariable Long id) {
+        log.info("UserController::disableUser id={}", id);
+        return userService.disableUser(id);
+    }
+
+    @PutMapping(value = "/enable/{id}")
+    public ResponseEntity<String> enableUser(@PathVariable Long id) {
+        log.info("UserController::enableUser id={}", id);
+        return userService.enableUser(id);
+    }
 }
