@@ -6,13 +6,13 @@ INSERT INTO instagram_user (first_name,last_name,username,email,active,created_a
      ('stray','simona','simonalomas','simona@email.com',true,'2024-09-23 11:13:37.714'),
      ('sherman','shepherd','osass','osa@email.com',true,'2024-09-23 11:13:37.714');
 
-INSERT INTO instagram_post (user_id,image_url,likes,active,created_at) VALUES
-     (1,'https://t3.ftcdn.net/jpg/01/02/85/78/360_F_102857871_vJs4AnThry3AUb2Va5VMTfRUUKiVwsgh.jpg',1,true,'2024-09-23 11:14:56.123'),
-     (2,'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Border_collie_canon.jpg/640px-Border_collie_canon.jpg',1,true,'2024-09-23 11:15:27.921'),
-     (3,'https://content.elmueble.com/medio/2023/10/13/perro-de-raza-doberman_d76a132d_231013233105_1000x1515.jpg',1,true,'2024-09-23 11:14:56.123'),
-     (4,'https://www.purina.es/sites/default/files/2021-02/BREED%20Hero_0075_japanese_shiba_inu.jpg',1,true,'2024-09-23 11:15:27.921'),
-     (5,'https://news.orvis.com/wp-content/uploads/2019/08/stray.jpg',1,true,'2024-09-23 11:14:56.123'),
-     (6,'https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg',1,true,'2024-09-23 11:15:27.921');
+INSERT INTO instagram_post (user_id,image_url,active,created_at) VALUES
+     (1,'https://t3.ftcdn.net/jpg/01/02/85/78/360_F_102857871_vJs4AnThry3AUb2Va5VMTfRUUKiVwsgh.jpg',true,'2024-09-23 11:14:56.123'),
+     (2,'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Border_collie_canon.jpg/640px-Border_collie_canon.jpg',true,'2024-09-23 11:15:27.921'),
+     (3,'https://content.elmueble.com/medio/2023/10/13/perro-de-raza-doberman_d76a132d_231013233105_1000x1515.jpg',true,'2024-09-23 11:14:56.123'),
+     (4,'https://www.purina.es/sites/default/files/2021-02/BREED%20Hero_0075_japanese_shiba_inu.jpg',true,'2024-09-23 11:15:27.921'),
+     (5,'https://news.orvis.com/wp-content/uploads/2019/08/stray.jpg',true,'2024-09-23 11:14:56.123'),
+     (6,'https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg',true,'2024-09-23 11:15:27.921');
 
 INSERT INTO instagram_comment (post_id, from_user_id,"comment",active,created_at) VALUES
     (1,2,'You look adorable',true,'2024-09-23 11:23:07.643'),
@@ -53,3 +53,29 @@ INSERT INTO instagram_follow (user_id,follow_by,active,created_at) VALUES
     (5,6,true,'2024-09-23 11:23:29.333'),
     (6,2,true,'2024-09-23 11:23:29.333'),
     (6,5,true,'2024-09-23 11:23:29.333');
+
+INSERT INTO instagram_like (user_id,like_by,post_id,active,created_at) VALUES
+    (1,2,1,true,'2024-10-29 10:29:29.333'),
+    (1,3,1,true,'2024-10-29 10:29:29.333'),
+    (1,4,1,true,'2024-10-29 10:29:29.333'),
+    (1,5,1,true,'2024-10-29 10:29:29.333'),
+    (1,6,1,true,'2024-10-29 10:29:29.333'),
+    (2,1,2,true,'2024-10-29 10:29:29.333'),
+    (2,3,2,true,'2024-10-29 10:29:29.333'),
+    (2,4,2,true,'2024-10-29 10:29:29.333'),
+    (2,5,2,true,'2024-10-29 10:29:29.333'),
+    (2,6,2,true,'2024-10-29 10:29:29.333'),
+    (3,1,3,true,'2024-10-29 10:29:29.333'),
+    (3,2,3,true,'2024-10-29 10:29:29.333'),
+    (3,4,3,true,'2024-10-29 10:29:29.333'),
+    (3,5,3,true,'2024-10-29 10:29:29.333'),
+    (4,1,4,true,'2024-10-29 10:29:29.333'),
+    (4,2,4,true,'2024-10-29 10:29:29.333'),
+    (4,5,4,true,'2024-10-29 10:29:29.333'),
+    (5,1,5,true,'2024-10-29 10:29:29.333'),
+    (5,2,5,true,'2024-10-29 10:29:29.333'),
+    (5,3,5,true,'2024-10-29 10:29:29.333'),
+    (5,4,5,true,'2024-10-29 10:29:29.333'),
+    (5,6,5,true,'2024-10-29 10:29:29.333'),
+    (6,2,6,true,'2024-10-29 10:29:29.333'),
+    (6,5,6,true,'2024-10-29 10:29:29.333');

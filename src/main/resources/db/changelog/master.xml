@@ -13,5 +13,6 @@
     <include file="db/changelog/create-table-post.sql"/>
     <include file="db/changelog/create-table-comment.sql"/>
     <include file="db/changelog/create-table-follow.sql"/>
+    <include file="db/changelog/create-table-like.sql"/>
     <include file="db/changelog/import-data.sql" />
 </databaseChangeLog>

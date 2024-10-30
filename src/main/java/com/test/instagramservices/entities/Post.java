@@ -40,9 +40,6 @@ public class Post {
     private String imageUrl;
 
     @Column
-    private Long likes;
-
-    @Column
     private boolean active;
 
     @Column(name = "created_at")

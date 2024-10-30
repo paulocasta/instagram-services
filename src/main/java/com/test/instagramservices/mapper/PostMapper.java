@@ -11,9 +11,9 @@ public final class PostMapper {
 
     public static PostDTO buildPostDTO(Post post) {
         return PostDTO.builder()
+                .postId(post.getId())
                 .userId(post.getUser().getId())
                 .userName(post.getUser().getName())
-                .active(post.isActive())
                 .createdAt(post.getCreatedAt())
                 .likes(post.getLikes())
                 .imageUrl(post.getImageUrl())

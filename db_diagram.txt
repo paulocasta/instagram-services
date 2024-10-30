@@ -2,8 +2,8 @@
 // Docs: https://dbml.dbdiagram.io/docs
 
 Table follow {
-  following_user_id integer [unique]
-  followed_user_id integer [unique]
+  user_id integer [unique]
+  follow_by integer [unique]
   active boolean
   created_at timestamp
   updated_at timestamp
@@ -24,7 +24,6 @@ Table post {
   id integer [primary key]
   user_id integer
   imageUrl varchar
-  likes int
   active boolean
   created_at timestamp
   updated_at timestamp
@@ -32,18 +31,33 @@ Table post {
 
 Table comment {
   id integer [primary key]
-  title varchar
+  post_id varchar
+  from_user_id integer
   comment text
-  user_id integer
   active boolean
   created_at timestamp
+  updated_at timestamp
 }
 
-Ref: post.user_id > user.id // many-to-one
+Table like {
+  user_id integer [unique]
+  like_by integer [unique]
+  post_id integer [unique]
+  active boolean
+  created_at timestamp
+  updated_at timestamp
+}
 
-Ref: user.id < follow.following_user_id
+Ref: post.user_id > user.id
 
-Ref: user.id < follow.followed_user_id
+Ref: user.id < follow.user_id
 
-Ref: user.id < comment.user_id
+Ref: user.id < follow.follow_by
 
+Ref: user.id < comment.from_user_id
+
+Ref: user.id < like.user_id
+
+Ref: user.id < like.like_by
+
+Ref: post.id < like.post_id 
