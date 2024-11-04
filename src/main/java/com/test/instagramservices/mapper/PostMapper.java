@@ -14,7 +14,7 @@ public final class PostMapper {
                 .postId(post.getId())
                 .userId(post.getUser().getId())
                 .userName(post.getUser().getName())
-                .createdAt(post.getCreatedAt())
+                .createdAt(DateMapper.getPublishedTime(post.getCreatedAt()))
                 .imageUrl(post.getImageUrl())
                 .build();
     }
