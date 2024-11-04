@@ -25,16 +25,14 @@ public class PostController {
 
     private final PostService postService;
 
-    @GetMapping(value = "/byId/{id}")
+    @GetMapping(value = "/{id}")
     public PostDTO getPostById(@PathVariable Long id) {
-
-        log.info("Retriving post with ID:[{}]", id);
+        log.info("Retrieving post with ID:[{}]", id);
         return postService.findPostById(id);
     }
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<PostDTO>> getAllPost() {
-
         HttpHeaders corsHeader = new HttpHeaders();
         corsHeader.set("Access-Control-Allow-Origin", "*");
         log.info("Retrieving all post");

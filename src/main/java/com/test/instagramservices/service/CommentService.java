@@ -28,7 +28,7 @@ public class CommentService {
     }
 
     public ResponseEntity<List<CommentDTO>> findAllCommentsByPostId(Long id) {
-        List<Comment> comments = commentRepository.findAllByPostId(id);
+        List<Comment> comments = commentRepository.findAllByPostIdAndActiveIsTrue(id);
         return ResponseEntity.ok(comments.stream().map(CommentMapper::buildCommentDTO).toList());
     }
 

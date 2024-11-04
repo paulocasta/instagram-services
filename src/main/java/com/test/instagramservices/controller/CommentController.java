@@ -29,7 +29,7 @@ public class CommentController {
         return commentService.findByCommentId(id);
     }
 
-    @GetMapping(value = "/postId/{id}")
+    @GetMapping(value = "/post/{id}")
     public ResponseEntity<List<CommentDTO>> findAllCommentsByPostId(@PathVariable Long id) {
         return commentService.findAllCommentsByPostId(id);
     }

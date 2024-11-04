@@ -18,6 +18,4 @@ public class CommentDTO {
     private Long fromUserId;
     private String comment;
     private LocalDateTime createdAt;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private boolean active;
 }

@@ -15,7 +15,6 @@ public final class CommentMapper {
         return CommentDTO.builder()
                 .postId(comment.getPostId())
                 .createdAt(comment.getCreatedAt())
-                .active(comment.isActive())
                 .fromUserId(comment.getFromUserId())
                 .comment(comment.getComment())
                 .build();

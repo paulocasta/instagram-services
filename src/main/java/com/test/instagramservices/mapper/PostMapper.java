@@ -15,7 +15,6 @@ public final class PostMapper {
                 .userId(post.getUser().getId())
                 .userName(post.getUser().getName())
                 .createdAt(post.getCreatedAt())
-                .likes(post.getLikes())
                 .imageUrl(post.getImageUrl())
                 .build();
     }
@@ -24,7 +23,6 @@ public final class PostMapper {
         return Post.builder()
                 .imageUrl(dto.getImageUrl())
                 .active(true)
-                .likes(0L)
                 .createdAt(LocalDateTime.now())
                 .build();
     }
